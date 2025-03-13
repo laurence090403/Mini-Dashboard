@@ -1,0 +1,51 @@
+<div class="crypto-container">
+  <h2>Affichage des Cryptos</h2>
+  <button (click)="afficherListe('top3')">Afficher le Top 3</button>
+  <button (click)="afficherListe('all')">Afficher Toutes les Cryptos</button>
+</div>
+
+<!-- Top 3 Cryptos -->
+<div *ngIf="affichage === 'top3'" class="crypto-container">
+  <h2>Top 3 Cryptos</h2>
+  <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix actuel</th>
+          <th>Évolution 24h</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let crypto of top3Cryptos">
+          <td>{{ crypto.name }}</td>
+          <td>{{ crypto.current_price | currency:'USD' }}</td>
+          <td [ngClass]="{'positive': crypto.price_change_percentage_24h > 0, 'negative': crypto.price_change_percentage_24h < 0}">
+            {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+<!-- Liste complète des cryptos -->
+<div *ngIf="affichage === 'all'" class="crypto-container">
+  <h2>Liste des Cryptos</h2>
+  <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prix actuel</th>
+          <th>Variation (24h)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let crypto of cryptos">
+          <td>{{ crypto.name }}</td>
+          <td>{{ crypto.current_price | currency:'USD' }}</td>
+          <td [ngClass]="{'positive': crypto.price_change_percentage_24h > 0, 'negative': crypto.price_change_percentage_24h < 0}">
+            {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
