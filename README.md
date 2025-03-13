@@ -36,6 +36,7 @@ SCSS (pour le design)
 
 Installation et Exécution du Projet
 
+
 1️⃣ Prérequis
 
 Node.js (v16+ recommandé) et npm (ou Yarn)
@@ -53,6 +54,7 @@ git clone https://github.com/votre-repo/crypto-dashboard.git
 cd crypto-dashboard/
 
 # Lancer l'application Spring Boot
+mvn clean install
 mvn spring-boot:run
 
 Le backend sera disponible sur http://localhost:8080.
@@ -65,22 +67,6 @@ ng serve     # Lancer l'application Angular
 
 Le frontend sera disponible sur http://localhost:4200.
 
-Structure du Projet
-
-crypto-dashboard/
-│── backend/            # Backend avec Spring Boot
-│   ├── src/main/java/
-│   ├── pom.xml
-│   ├── ...
-│
-│── frontend/           # Frontend avec Angular
-│   ├── src/app/
-│   ├── package.json
-│   ├── angular.json
-│
-│── README.md           # Documentation du projet
-
-Endpoints API
 
 🔹 Récupérer toutes les cryptos
 
@@ -90,6 +76,9 @@ GET http://localhost:8080/cryptos
 🔹 Récupérer le Top 3 des cryptos
 
 GET http://localhost:8080/cryptos/top3
+
+#### *Gestion du Cache*
+Le cache est implémenté via @Cacheable.
 
 Auteur
 
